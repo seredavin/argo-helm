@@ -82,6 +82,11 @@ spec:
         {{- if .Values.repoServer.volumeMounts }}
           {{- toYaml .Values.repoServer.volumeMounts | nindent 8 }}
         {{- end }}
+        {{- range $key, $value :=  .Values.configs.customCertificates}}
+        - mountPath: /etc/ssl/certs/{{ $key }}
+          name: custom-certificates
+          subPath: {{ $key }}
+        {{- end }}
         - mountPath: /app/config/gpg/source
           name: gpg-keys
         - mountPath: /app/config/gpg/keys
@@ -162,6 +167,12 @@ spec:
       {{- if .Values.repoServer.volumes }}
         {{- toYaml .Values.repoServer.volumes | nindent 6 }}
       {{- end }}
+      {{- if .Values.configs.customCertificates }}
+      - name: custom-certificates
+        secret:
+          defaultMode: 420
+          secretName: custom-certificates
+      {{- end}}
       - name: gpg-keys
         configMap:
           name: argocd-gpg-keys-cm

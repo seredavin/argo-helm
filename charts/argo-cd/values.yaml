@@ -1710,6 +1710,19 @@ repoServer:
 
 ## Argo Configs
 configs:
+  customCertificates:
+    # ca-cert-1.crt: |
+    #   -----BEGIN CERTIFICATE-----
+    #   MIIHHzCCBQegAwIBAgIQSa83c8JZ3iQyD5+HUeRRHTANBgkqhkiG9w0BAQsFADBJ
+    #   ...
+    #   kZi8
+    #   -----END CERTIFICATE-----
+    # ca-cert-2.crt: |
+    #   -----BEGIN CERTIFICATE-----
+    #   MIIHHzCCBQegAwIBAgIQSa83c8JZ3iQyD5+HUeRRHTANBgkqhkiG9w0BAQsFADBJ
+    #   ...
+    #   kZi8
+    #   -----END CERTIFICATE-----
   # -- Provide one or multiple [external cluster credentials]
   # @default -- `[]` (See [values.yaml])
   ## Ref:
